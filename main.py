@@ -102,10 +102,9 @@ class Database(Media):
             # dict = {"code": result[0], "name": result[1], "price": result[2], "count": result[3]}
             my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5])
             MOVIES.append (my_obj)
-            MOVIE_NAMES.append(Media(result[0]))
-            ACTORS.append(Media(result[5]))
+            MOVIE_NAMES.append(my_obj([0]))
+            ACTORS.append(my_obj([5]))
 
-        
         f.close ()
         
     @staticmethod
@@ -162,8 +161,6 @@ class Actor:
         print(ACTORS)
         
 
-
-
 db = Database()
 MOVIE_NAMES = []
 MOVIES = []
@@ -218,3 +215,4 @@ while True:
         exit(0)
     else:
         print ("Enter a number between 1 and 7.")
+
