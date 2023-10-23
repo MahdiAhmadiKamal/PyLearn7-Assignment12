@@ -161,12 +161,10 @@ class Actor:
         print(ACTORS)
         
 
-
 db = Database()
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
-
 
 
 def show_menu ():
