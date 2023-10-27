@@ -166,7 +166,6 @@ MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
 
-
 def show_menu ():
     print ("1- Add")
     print ("2- Edit")
