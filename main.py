@@ -1,4 +1,5 @@
 import pytube
+from tabulate import tabulate
 
 class Media:
     def __init__(self, n, d, s, u, du, c):
@@ -12,11 +13,17 @@ class Media:
 
     #methods
     def show_info(self):
-        print(self.name, ',', self.director, ',', self.score, ',', self.url, ',', self.duration, ',', self.cast)
+        data = [[self.name, self.director, self.score, self.url, self.duration, self.cast]]
 
+        
+        print (tabulate(data))
+        # print(self.name, ',', self.director, ',', self.score, ',', self.url, ',', self.duration, ',', self.cast)
 
-    def show_list(self):
-        print ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")
+    @staticmethod
+    def show_list():
+        col_names = ["name", "    director", "    score", "     URL", "                           duration", "cast"]
+        print(tabulate("",headers= col_names))
+        # ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")
         for movie in MOVIES:
             movie.show_info()
 
@@ -25,6 +32,7 @@ class Database:
     def __init__(self, a):
         #properties
         self.address = a
+
     #methods
     def read(self):
         f = open (self.address, "r")
@@ -38,6 +46,20 @@ class Database:
             ACTORS.append(result[5])
 
         f.close ()
+
+    # @staticmethod
+    def write(self):
+        f = open(self.address, "w")
+        for movie in MOVIES:
+            f.write(movie.name + ",")
+            f.write(movie.director + ",")
+            f.write(movie.score + ",")
+            f.write(movie.url + ",")
+            f.write(movie.duration + ",")
+            f.write(movie.cast + "\n")
+
+        f.close ()
+
 
 db = Database("PyLearn7-Assignment12/database.txt")
 MOVIE_NAMES = []
@@ -58,6 +80,7 @@ print ("Loading...")
 
 db.read()
 print ("Data loaded.")
+
 
 while True:
     show_menu()
