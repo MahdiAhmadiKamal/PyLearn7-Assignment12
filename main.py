@@ -20,6 +20,54 @@ class Media:
         # print(self.name, ',', self.director, ',', self.score, ',', self.url, ',', self.duration, ',', self.cast)
 
     @staticmethod
+    def add():
+        name = input("enter movie name: ")
+        director = input("enter movie director: ")
+        score = input("enter movie score: ")
+        url = input("enter download url: ")
+        duration = input("enter movie duration (first put an space and enter with this format: 2h16m): ")
+        cast = input("enter cast: ")
+        new_movie = Media(name, director, score, url, duration, cast)
+        MOVIES.append(new_movie)
+
+    def edit(self):
+        # name = input ("enter the movie name: ")
+        if name in MOVIE_NAMES:
+            for movie in MOVIES:
+                if self.name == name:
+                    self.show_info()
+                    print("name: 1")
+                    print("director: 2")
+                    print("score: 3")
+                    print("url: 4")
+                    print("duration: 5")
+                    print("cast: 6")
+                    item = int (input("select the item you want to edit: "))
+                    while item != 1 and item != 2 and item != 3 and item != 4 and item != 5 and item != 6:
+                        print ('Select from 1 to 6!')
+                        item = int (input("select the item you want to edit: "))
+                    if item == 1:
+                        movie.name = input("enter the new name: ")
+                        print ('Information updated successfully.')
+                    if item == 2:
+                        movie.director = input("enter the new director: ")
+                        print ('Information updated successfully.')
+                    if item == 3:
+                        movie.score = input("enter the new score: ")
+                        print ('Information updated successfully.')
+                    if item == 4:
+                        movie.url = input("enter the new url: ")
+                        print ('Information updated successfully.')
+                    if item == 5:
+                        movie.duration = input("enter the new duration: ")
+                        print ('Information updated successfully.')
+                    if item == 6:
+                        movie.cast = input("enter the new cast: ")
+                        print ('Information updated successfully.')
+        else:
+            print ('There is no movie with this name in the database.')
+
+    @staticmethod
     def show_list():
         col_names = ["name", "    director", "    score", "     URL", "                           duration", "cast"]
         print(tabulate("",headers= col_names))
@@ -56,7 +104,7 @@ class Database:
             f.write(movie.score + ",")
             f.write(movie.url + ",")
             f.write(movie.duration + ",")
-            f.write(movie.cast + "\n")
+            f.write(movie.cast)
 
         f.close ()
 
@@ -90,7 +138,7 @@ while True:
         Media.add ()
 
     elif choice == 2:
-        name = int(input("enter movie name: "))
+        name = input("enter movie name: ")
         for movie in MOVIES:
             if movie.name == name:
                 movie.edit()
