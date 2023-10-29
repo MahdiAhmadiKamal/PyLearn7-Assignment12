@@ -34,8 +34,8 @@ class Media:
         # db.read()
         # name = input ("enter the movie name: ")
         
-            for movie in MOVIES:
-                if movie.name == name:
+            # for movie in MOVIES:
+                # if movie.name == name:
                     movie.show_info()
                     print("name: 1")
                     print("director: 2")
@@ -45,7 +45,7 @@ class Media:
                     print("cast: 6")
                     print("EXIT: 7")
                     item = int (input("select the item you want to edit or exit: "))
-                    while item != 1:
+                    while item!=1 and item!=2 and item!=3 and item!=4 and item!=5 and item!=6 and item!=7:
                         print ('Select from 1 to 7!')
                         item = int (input("select the item you want to edit: "))
                     if item == 1:
@@ -67,6 +67,8 @@ class Media:
                         movie.cast = input("enter the new cast: ")
                         print ('Information updated successfully.')
                     elif item == 7:
+                        show_menu()
+                        # break
 
             
 
