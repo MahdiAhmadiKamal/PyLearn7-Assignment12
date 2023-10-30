@@ -27,57 +27,53 @@ class Media:
         url = input("enter download url: ")
         duration = input("enter movie duration (first put an space and enter with this format: 2h16m): ")
         cast = input("enter cast: ")
-        new_movie = Media(name, director, score, url, duration, cast)
+        new_movie = Media("\n"+name, director, score, url, duration, cast)
         MOVIES.append(new_movie)
     
     def edit(self):
-        # db.read()
-        # name = input ("enter the movie name: ")
         
-            # for movie in MOVIES:
-            #     if movie.name == name:
-                    movie.show_info()
-                    print("name: 1")
-                    print("director: 2")
-                    print("score: 3")
-                    print("url: 4")
-                    print("duration: 5")
-                    print("cast: 6")
-                    print("EXIT: 7")
-                    item = int (input("select the item you want to edit or exit: "))
-                    while True:
-                        # print ('Select from 1 to 7!')
-                        # item = int (input("select the item you want to edit: "))
-                        if item == 1:
-                            movie.name = input("enter the new name: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 2:
-                            movie.director = input("enter the new director: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 3:
-                            movie.score = input("enter the new score: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 4:
-                            movie.url = input("enter the new url: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 5:
-                            movie.duration = input("enter the new duration: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 6:
-                            movie.cast = input("enter the new cast: ")
-                            print ('Information updated successfully.')
-                            break
-                        elif item == 7:
-                            # show_menu()
-                            break
-                        else:
-                            print ('Select from 1 to 7!')
-                            item = int (input("select the item you want to edit: "))
+        movie.show_info()
+        print("name: 1")
+        print("director: 2")
+        print("score: 3")
+        print("url: 4")
+        print("duration: 5")
+        print("cast: 6")
+        print("EXIT: 7")
+        item = int (input("select the item you want to edit or exit: "))
+        while True:
+            # print ('Select from 1 to 7!')
+            # item = int (input("select the item you want to edit: "))
+            if item == 1:
+                movie.name = input("enter the new name: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 2:
+                movie.director = input("enter the new director: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 3:
+                movie.score = input("enter the new score: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 4:
+                movie.url = input("enter the new url: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 5:
+                movie.duration = input("enter the new duration: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 6:
+                movie.cast = input("enter the new cast: ")
+                print ('Information updated successfully.')
+                break
+            elif item == 7:
+                # show_menu()
+                break
+            else:
+                print ('Select from 1 to 7!')
+                item = int (input("select the item you want to edit: "))
 
             
 
@@ -112,6 +108,7 @@ class Database:
     def write(self):
         
         f = open(self.address, "w")
+        
         for movie in MOVIES:
             f.write(movie.name + ",")
             f.write(movie.director + ",")
@@ -119,11 +116,13 @@ class Database:
             f.write(movie.url + ",")
             f.write(movie.duration + ",")
             f.write(movie.cast)
+            break
 
         f.close ()
 
 
 db = Database("PyLearn7-Assignment12/database.txt")
+
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
@@ -151,16 +150,10 @@ while True:
     if choice == 1:
         Media.add ()
 
-    # elif choice == 2:
-    #     name = input("enter movie name: ")
-    #     for movie in MOVIES:
-    #         if movie.name == name:
-    #             movie.edit()
-
     elif choice == 2:
-       
+        # db.read()
         name = input("enter movie name: ")
-        db.read()
+        # db.read()
         if name in MOVIE_NAMES:
             for movie in MOVIES:
                 # db.read()
@@ -172,9 +165,7 @@ while True:
         else:
             print("There is no movie with this name in the database.")   
             # break 
-          
-
-             
+                 
     elif choice == 3:
         name = int(input("enter product name: "))
         for movie in MOVIES:
@@ -189,8 +180,9 @@ while True:
 
     elif choice == 6:
         Media.show_list()
+
     elif choice == 7:
-        
+       
         db.write()
         exit(0)
     else:
