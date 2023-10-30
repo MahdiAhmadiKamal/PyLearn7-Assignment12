@@ -1,4 +1,4 @@
-import pytube
+# import pytube
 from tabulate import tabulate
 
 class Media:
@@ -35,7 +35,7 @@ class Media:
         # name = input ("enter the movie name: ")
         
             # for movie in MOVIES:
-                # if movie.name == name:
+            #     if movie.name == name:
                     movie.show_info()
                     print("name: 1")
                     print("director: 2")
@@ -45,30 +45,39 @@ class Media:
                     print("cast: 6")
                     print("EXIT: 7")
                     item = int (input("select the item you want to edit or exit: "))
-                    while item!=1 and item!=2 and item!=3 and item!=4 and item!=5 and item!=6 and item!=7:
-                        print ('Select from 1 to 7!')
-                        item = int (input("select the item you want to edit: "))
-                    if item == 1:
-                        movie.name = input("enter the new name: ")
-                        print ('Information updated successfully.')
-                    elif item == 2:
-                        movie.director = input("enter the new director: ")
-                        print ('Information updated successfully.')
-                    elif item == 3:
-                        movie.score = input("enter the new score: ")
-                        print ('Information updated successfully.')
-                    elif item == 4:
-                        movie.url = input("enter the new url: ")
-                        print ('Information updated successfully.')
-                    elif item == 5:
-                        movie.duration = input("enter the new duration: ")
-                        print ('Information updated successfully.')
-                    elif item == 6:
-                        movie.cast = input("enter the new cast: ")
-                        print ('Information updated successfully.')
-                    elif item == 7:
-                        show_menu()
-                        # break
+                    while True:
+                        # print ('Select from 1 to 7!')
+                        # item = int (input("select the item you want to edit: "))
+                        if item == 1:
+                            movie.name = input("enter the new name: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 2:
+                            movie.director = input("enter the new director: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 3:
+                            movie.score = input("enter the new score: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 4:
+                            movie.url = input("enter the new url: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 5:
+                            movie.duration = input("enter the new duration: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 6:
+                            movie.cast = input("enter the new cast: ")
+                            print ('Information updated successfully.')
+                            break
+                        elif item == 7:
+                            # show_menu()
+                            break
+                        else:
+                            print ('Select from 1 to 7!')
+                            item = int (input("select the item you want to edit: "))
 
             
 
@@ -100,8 +109,8 @@ class Database:
 
         f.close ()
 
-    # @staticmethod
     def write(self):
+        
         f = open(self.address, "w")
         for movie in MOVIES:
             f.write(movie.name + ",")
@@ -149,14 +158,21 @@ while True:
     #             movie.edit()
 
     elif choice == 2:
+       
         name = input("enter movie name: ")
-        for movie in MOVIES:
-            db.read()
-            if movie.name == name:
-                movie.edit()
-            else:
-                print("There is no movie with this name in the database.")   
-                break            
+        db.read()
+        if name in MOVIE_NAMES:
+            for movie in MOVIES:
+                # db.read()
+                
+                if movie.name == name:
+                    movie.edit()
+                    # db.write()
+                    break
+        else:
+            print("There is no movie with this name in the database.")   
+            # break 
+          
 
              
     elif choice == 3:
@@ -174,6 +190,7 @@ while True:
     elif choice == 6:
         Media.show_list()
     elif choice == 7:
+        
         db.write()
         exit(0)
     else:
