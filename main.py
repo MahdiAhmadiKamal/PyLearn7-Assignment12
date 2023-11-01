@@ -74,8 +74,16 @@ class Media:
             else:
                 print ('Select from 1 to 7!')
                 item = int (input("select the item you want to edit: "))
+    
+    def remove(self):
+        # name = input ("enter the movie name: ")
+        for movie in MOVIES:
+            if movie.name == name:
+                self.show_info()
+                MOVIES.remove(movie)
+                print ('The movie has been successfully removed.')
 
-            
+             
 
     @staticmethod
     def show_list():
@@ -99,7 +107,7 @@ class Database:
             result = line.split (",")
             # dict = {"code": result[0], "name": result[1], "price": result[2], "count": result[3]}
             my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5])
-            MOVIES.append (my_obj)
+            MOVIES.append(my_obj)
             MOVIE_NAMES.append(result[0])
             ACTORS.append(result[5])
 
@@ -116,7 +124,6 @@ class Database:
             f.write(movie.url + ",")
             f.write(movie.duration + ",")
             f.write(movie.cast)
-            break
 
         f.close ()
 
@@ -164,10 +171,9 @@ while True:
                     break
         else:
             print("There is no movie with this name in the database.")   
-            # break 
                  
     elif choice == 3:
-        name = int(input("enter product name: "))
+        name = input("enter movie name: ")
         for movie in MOVIES:
             if movie.name == name:
                 movie.remove()
