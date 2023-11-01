@@ -76,16 +76,12 @@ class Media:
                 item = int (input("select the item you want to edit: "))
     
     def remove(self):
-        # name = input ("enter the movie name: ")
-        for movie in MOVIES:
-            if movie.name == name:
-                self.show_info()
-                MOVIES.remove(movie)
-                print ('The movie has been successfully removed.')
+        movie.show_info()
+        MOVIES.remove(movie)
+        print ('The movie has been successfully removed.')
 
     @staticmethod        
     def search():
-        
         user_input = input ('enter movie name or movie director: ')
         for movie in MOVIES:
             if movie.name == user_input or movie.director == user_input:
@@ -93,9 +89,12 @@ class Media:
                 search_result.append(movie)
 
     def download(self):
-        link = self.url
-        first_stream = pytube.YouTube(link).streams.first()
-        first_stream.download(output_path='./', filename=self.name +'.mp4')
+        
+        # for movie in MOVIES:
+        #    if movie.name == name:
+                link = movie.url
+                first_stream = pytube.YouTube(link).streams.first()
+                first_stream.download(output_path='./', filename=movie.name + '.mp4')
 
     @staticmethod
     def show_list():
@@ -192,14 +191,16 @@ while True:
 
     elif choice == 4:
         search_result = []
-        # name = input("enter movie name: ")
         Media.search()
         if len(search_result) == 0:
             print("....not found....")
             
 
     elif choice == 5:
-       movie.download()
+        name = input("enter movie name: ")
+        for movie in MOVIES:
+            if movie.name == name:
+                movie.download()
 
     elif choice == 6:
         Media.show_list()
