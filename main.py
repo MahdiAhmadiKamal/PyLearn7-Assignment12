@@ -83,7 +83,15 @@ class Media:
                 MOVIES.remove(movie)
                 print ('The movie has been successfully removed.')
 
-             
+    @staticmethod        
+    def search():
+        user_input = input ('type movie name or movie director: ')
+        for movie in MOVIES:
+            if movie.name == user_input or movie.director == user_input:
+                movie.show_info()
+                break
+        else:
+            print ("not found")         
 
     @staticmethod
     def show_list():
