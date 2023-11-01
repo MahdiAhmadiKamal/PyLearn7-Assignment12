@@ -1,4 +1,4 @@
-# import pytube
+import pytube
 from tabulate import tabulate
 
 class Media:
@@ -85,13 +85,17 @@ class Media:
 
     @staticmethod        
     def search():
-        user_input = input ('type movie name or movie director: ')
+        
+        user_input = input ('enter movie name or movie director: ')
         for movie in MOVIES:
             if movie.name == user_input or movie.director == user_input:
                 movie.show_info()
-                break
-        else:
-            print ("not found")         
+                search_result.append(movie)
+
+    def download(self):
+        link = self.url
+        first_stream = pytube.YouTube(link).streams.first()
+        first_stream.download(output_path='./', filename=self.name +'.mp4')
 
     @staticmethod
     def show_list():
@@ -187,10 +191,15 @@ while True:
                 movie.remove()
 
     elif choice == 4:
+        search_result = []
+        # name = input("enter movie name: ")
         Media.search()
+        if len(search_result) == 0:
+            print("....not found....")
+            
 
     elif choice == 5:
-       Media.download()
+       movie.download()
 
     elif choice == 6:
         Media.show_list()
