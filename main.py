@@ -98,7 +98,7 @@ class Media:
 
     @staticmethod
     def show_list():
-        col_names = ["name", "    director", "    score", "     URL", "                           duration", "cast"]
+        col_names = ["name", "    director", "    score", "      URL", "                           duration", "cast"]
         print(tabulate("",headers= col_names))
         # ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")
         for movie in MOVIES:
