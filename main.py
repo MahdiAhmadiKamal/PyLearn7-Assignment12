@@ -139,11 +139,58 @@ class Database:
         f.close ()
 
 
+class Film(Media):
+    def __init__(self, n, d, s, u, du, c, g, bo, rd):
+        super().__init__(n, d, s, u, du, c)
+
+        self.genre = g
+        self.box_office = bo
+        self.release_date = rd
+        
+class Series(Media):
+    def __init__(self, n, d, s, u, du, c, g, nos, noe):
+        super().__init__(n, d, s, u, du, c)
+        
+        self.genre = g
+        self.number_of_seasons = nos
+        self.number_of_episodes = noe
+            
+class Documentary(Media):
+    def __init__(self, n, d, s, u, du, c, rd):
+        super().__init__(n, d, s, u, du, c)
+
+        self.release_date = rd
+
+class Clip(Media):
+    def __init__(self, n, d, s, u, du, c, t):
+        super().__init__(n, d, s, u, du, c)
+
+        self.topic = t
+
+class Actor():
+    def __init__(self, m):
+        #properties
+        self.movie = m
+    #methods
+    def show_cast(self):
+        ACTORS.append(self.cast)
+        print(ACTORS)
+
+
+# AkbarAbdi=Actor()
+# RezaKianian=Actor()
+
+            
 db = Database("PyLearn7-Assignment12/database.txt")
 
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
+
+inception = Media("Inception","Christopher Nolan","14","https://www.youtube.com/watch?v=herRuccntNE", "2h28m","Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy")
+# inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
+ACTORS.append(inception.cast)
+print(ACTORS)
 
 def show_menu ():
     print ("1- Add")
