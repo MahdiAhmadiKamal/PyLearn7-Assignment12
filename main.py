@@ -117,10 +117,10 @@ class Database:
         for line in f:
             result = line.split (",")
             # dict = {"code": result[0], "name": result[1], "price": result[2], "count": result[3]}
-            my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5])
+            my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5:len(result):1])
             MOVIES.append(my_obj)
             MOVIE_NAMES.append(result[0])
-            ACTORS.append(result[5])
+            ACTORS.append(result[5:len(result):1])
 
         f.close ()
 
@@ -177,20 +177,22 @@ class Actor():
     def show(self):
         print("name:", self.name, "  born:", self.birth_year, "  birth country:", self.birth_country)
 
-    def cast_list(self):
-        db.read
+    def movie(self):
+        f = open ("PyLearn7-Assignment12/database.txt", "r")
+        actor_movies=[]
+        
+        for line in f:
+            result = line.split (",")
+            
+            movie = result[0]
+            actors = result[5:len(result):1]
+            
+            if self.name in actors:
+                actor_movies.append(movie)
 
+        print(actor_movies)
+        f.close()
 
-    def show_cast(self):
-        ACTORS.append(self.cast)
-        print(ACTORS)
-
-
-
-
-
-# AkbarAbdi=Actor()
-# RezaKianian=Actor()
 
             
 db = Database("PyLearn7-Assignment12/database.txt")
@@ -199,13 +201,15 @@ MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
 
-inception = Media("Inception","Christopher Nolan","14","https://www.youtube.com/watch?v=herRuccntNE", "2h28m","Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy")
+inception = Media("Inception","Christopher Nolan",14,"https://www.youtube.com/watch?v=herRuccntNE", "2h28m",['Leonardo DiCaprio','Joseph Gordon-Levitt','Cillian Murphy'])
 # inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
 dicaprio = Actor('Leonardo DiCaprio', 1974, 'Inception')
 dicaprio.show()
+dicaprio.movie()
+# ACTORS.append(inception.cast)
+# print(ACTORS)
 
-ACTORS.append(inception.cast)
-print(ACTORS)
+
 
 def show_menu ():
     print ("1- Add")
