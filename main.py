@@ -168,13 +168,25 @@ class Clip(Media):
         self.topic = t
 
 class Actor():
-    def __init__(self, m):
+    def __init__(self, n, b, c):
         #properties
-        self.movie = m
+        self.name = n
+        self.birth_year = b
+        self.birth_country = c
     #methods
+    def show(self):
+        print("name:", self.name, "  born:", self.birth_year, "  birth country:", self.birth_country)
+
+    def cast_list(self):
+        db.read
+
+
     def show_cast(self):
         ACTORS.append(self.cast)
         print(ACTORS)
+
+
+
 
 
 # AkbarAbdi=Actor()
@@ -189,6 +201,9 @@ ACTORS = []
 
 inception = Media("Inception","Christopher Nolan","14","https://www.youtube.com/watch?v=herRuccntNE", "2h28m","Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy")
 # inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
+dicaprio = Actor('Leonardo DiCaprio', 1974, 'Inception')
+dicaprio.show()
+
 ACTORS.append(inception.cast)
 print(ACTORS)
 
