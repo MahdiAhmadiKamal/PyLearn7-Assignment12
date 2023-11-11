@@ -86,7 +86,6 @@ class Media:
                 print ('Information updated successfully.')
                 break
             elif item == 7:
-                # show_menu()
                 break
             else:
                 print ('Select from 1 to 7!')
@@ -107,11 +106,9 @@ class Media:
 
     def download(self):
         
-        # for movie in MOVIES:
-        #    if movie.name == name:
-                link = movie.url
-                first_stream = pytube.YouTube(link).streams.first()
-                first_stream.download(output_path='./', filename=movie.name + '.mp4')
+        link = movie.url
+        first_stream = pytube.YouTube(link).streams.first()
+        first_stream.download(output_path='./', filename=movie.name + '.mp4')
 
     @staticmethod
     def show_list():
