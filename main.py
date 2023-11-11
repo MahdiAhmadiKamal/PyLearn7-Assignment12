@@ -21,13 +21,21 @@ class Media:
 
     @staticmethod
     def add():
+        CAST = []
         name = input("enter movie name: ")
         director = input("enter movie director: ")
         score = input("enter movie score: ")
         url = input("enter download url: ")
         duration = input("enter movie duration (first put an space and enter with this format: 2h16m): ")
-        cast = input("enter cast: ")
-        new_movie = Media("\n"+name, director, score, url, duration, cast)
+        while True:
+            Q = input("Do you want to add any cast? (y/n)")
+            if Q == "y":
+                cast = input("enter cast: ")
+                CAST.append(cast)
+            else:
+                break
+
+        new_movie = Media(name, director, score, url, duration, CAST)
         MOVIES.append(new_movie)
     
     def edit(self):
@@ -65,7 +73,16 @@ class Media:
                 print ('Information updated successfully.')
                 break
             elif item == 6:
-                movie.cast = input("enter the new cast: ")
+                CAST = []
+                while True:
+                    Q = input("Do you want to add any cast? (y/n)")
+                    if Q == "y":
+                        cast = input("enter cast: ")
+                        CAST.append(cast)
+                    else:
+                        break
+
+                movie.cast = CAST
                 print ('Information updated successfully.')
                 break
             elif item == 7:
@@ -116,6 +133,7 @@ class Database:
         
         for line in f:
             result = line.split (",")
+            result[len(result)-1] = result[len(result)-1].strip()
             # dict = {"code": result[0], "name": result[1], "price": result[2], "count": result[3]}
             my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5:len(result):1])
             MOVIES.append(my_obj)
@@ -129,12 +147,15 @@ class Database:
         f = open(self.address, "w")
         
         for movie in MOVIES:
+            delimiter = ','
+            my_string = delimiter.join(movie.cast)
+
             f.write(movie.name + ",")
             f.write(movie.director + ",")
             f.write(movie.score + ",")
             f.write(movie.url + ",")
             f.write(movie.duration + ",")
-            f.write(movie.cast)
+            f.write(my_string+'\n')
 
         f.close ()
 
@@ -277,4 +298,3 @@ while True:
         exit(0)
     else:
         print ("Enter a number between 1 and 7.")
-
