@@ -2,8 +2,7 @@
 from media import Media
 from database import Database
 from actor import Actor
-
-           
+          
 db = Database("PyLearn7-Assignment12/database.txt")
 
 MOVIE_NAMES = []
