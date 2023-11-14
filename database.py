@@ -1,12 +1,15 @@
 import pytube
 from tabulate import tabulate
-
-global Media
-global movie
-global MOVIE_NAMES
-global MOVIES
-global ACTORS
-global search_result
+from media import Media
+MOVIE_NAMES = []
+MOVIES = []
+ACTORS = []
+# global Media
+# global movie
+# global MOVIE_NAMES
+# global MOVIES
+# global ACTORS
+# global search_result
 
 class Database:
     def __init__(self, a):
@@ -15,6 +18,7 @@ class Database:
 
     #methods
     def read(self):
+
         f = open (self.address, "r")
         
         for line in f:
