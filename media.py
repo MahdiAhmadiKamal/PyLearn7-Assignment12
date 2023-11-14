@@ -7,6 +7,7 @@ global MOVIES
 global ACTORS
 global search_result
 
+
 class Media:
     def __init__(self, n, d, s, u, du, c):
         #properties
@@ -32,7 +33,7 @@ class Media:
         director = input("enter movie director: ")
         score = input("enter movie score: ")
         url = input("enter download url: ")
-        duration = input("enter movie duration (first put an space and enter with this format: 2h16m): ")
+        duration = input("enter movie duration (first put an space and enter with this format: 02h06m): ")
         while True:
             Q = input("Do you want to add any cast? (y/n)")
             if Q == "y":
@@ -104,11 +105,33 @@ class Media:
 
     @staticmethod        
     def search():
-        user_input = input ('enter movie name or movie director: ')
-        for movie in MOVIES:
-            if movie.name == user_input or movie.director == user_input:
-                movie.show_info()
-                search_result.append(movie)
+
+        search_by = int(input(" search by name: 1 \n search by Running time: 2 \n "))
+        if search_by == 1:
+
+            user_input = input ('enter movie name or movie director: ')
+            for movie in MOVIES:
+                if movie.name == user_input or movie.director == user_input:
+                    movie.show_info()
+                    search_result.append(movie)
+
+        elif search_by == 2:
+                
+            print("enter the desired range of movie running time in minute (X to Y minutes): ")
+            X = int(input("X: "))
+            Y = int(input("Y: "))
+                
+            for movie in MOVIES:
+                hour = int(movie.duration[1:3])
+                min = int(movie.duration[4:6])
+                total = hour*60 + min
+                if X <= total <= Y:
+                    movie.show_info()
+                    search_result.append(movie)
+        else:
+            print("select 1 or 2")
+            Media.search()
+        
 
     def download(self):
         
@@ -123,4 +146,5 @@ class Media:
         # ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")
         for movie in MOVIES:
             movie.show_info()
-            
+
+        

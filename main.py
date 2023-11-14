@@ -17,6 +17,7 @@ dicaprio.movie()
 # ACTORS.append(inception.cast)
 # print(ACTORS)
 
+
 def show_menu ():
     print ("1- Add")
     print ("2- Edit")
@@ -41,16 +42,13 @@ while True:
         Media.add ()
 
     elif choice == 2:
-        # db.read()
         name = input("enter movie name: ")
-        # db.read()
+    
         if name in MOVIE_NAMES:
             for movie in MOVIES:
-                # db.read()
                 
                 if movie.name == name:
                     movie.edit()
-                    # db.write()
                     break
         else:
             print("There is no movie with this name in the database.")   
