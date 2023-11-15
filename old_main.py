@@ -1,16 +1,7 @@
 import pytube
 from tabulate import tabulate
 
-global movie
-global new_movie
-global MOVIE_NAMES
-global MOVIES
-global ACTORS
-global search_result
-# MOVIES = []
-
 class Media:
-    
     def __init__(self, n, d, s, u, du, c):
         #properties
         self.name = n
@@ -149,4 +140,179 @@ class Media:
         for movie in MOVIES:
             movie.show_info()
 
+
+class Database:
+    def __init__(self, a):
+        #properties
+        self.address = a
+
+    #methods
+    def read(self):
+        f = open (self.address, "r")
         
+        for line in f:
+            result = line.split (",")
+            result[len(result)-1] = result[len(result)-1].strip()
+            # dict = {"code": result[0], "name": result[1], "price": result[2], "count": result[3]}
+            my_obj = Media(result[0], result[1], result[2], result[3], result[4], result[5:len(result):1])
+            MOVIES.append(my_obj)
+            MOVIE_NAMES.append(result[0])
+            ACTORS.append(result[5:len(result):1])
+
+        f.close ()
+
+    def write(self):
+        
+        f = open(self.address, "w")
+        
+        for movie in MOVIES:
+            delimiter = ','
+            my_string = delimiter.join(movie.cast)
+
+            f.write(movie.name + ",")
+            f.write(movie.director + ",")
+            f.write(movie.score + ",")
+            f.write(movie.url + ",")
+            f.write(movie.duration + ",")
+            f.write(my_string+'\n')
+
+        f.close ()
+
+
+class Film(Media):
+    def __init__(self, n, d, s, u, du, c, g, bo, rd):
+        super().__init__(n, d, s, u, du, c)
+
+        self.genre = g
+        self.box_office = bo
+        self.release_date = rd
+        
+class Series(Media):
+    def __init__(self, n, d, s, u, du, c, g, nos, noe):
+        super().__init__(n, d, s, u, du, c)
+        
+        self.genre = g
+        self.number_of_seasons = nos
+        self.number_of_episodes = noe
+            
+class Documentary(Media):
+    def __init__(self, n, d, s, u, du, c, rd):
+        super().__init__(n, d, s, u, du, c)
+
+        self.release_date = rd
+
+class Clip(Media):
+    def __init__(self, n, d, s, u, du, c, t):
+        super().__init__(n, d, s, u, du, c)
+
+        self.topic = t
+
+class Actor():
+    def __init__(self, n, b, c):
+        #properties
+        self.name = n
+        self.birth_year = b
+        self.birth_country = c
+    #methods
+    def show(self):
+        print("name:", self.name, "  born:", self.birth_year, "  birth country:", self.birth_country)
+
+    def movie(self):
+        f = open ("PyLearn7-Assignment12/database.txt", "r")
+        actor_movies=[]
+        
+        for line in f:
+            result = line.split (",")
+            
+            movie = result[0]
+            actors = result[5:len(result):1]
+            
+            if self.name in actors:
+                actor_movies.append(movie)
+
+        print(actor_movies)
+        f.close()
+
+
+            
+db = Database("PyLearn7-Assignment12/database.txt")
+
+MOVIE_NAMES = []
+MOVIES = []
+ACTORS = []
+
+inception = Media("Inception","Christopher Nolan",14,"https://www.youtube.com/watch?v=herRuccntNE", "2h28m",['Leonardo DiCaprio','Joseph Gordon-Levitt','Cillian Murphy'])
+# inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
+dicaprio = Actor('Leonardo DiCaprio', 1974, 'Inception')
+dicaprio.show()
+dicaprio.movie()
+# ACTORS.append(inception.cast)
+# print(ACTORS)
+
+
+
+def show_menu ():
+    print ("1- Add")
+    print ("2- Edit")
+    print ("3- Remove")
+    print ("4- Search")
+    print ("5- Download")
+    print ("6- Show list")
+    print ("7- Exit")
+
+print ("Welcome to my Movie Database application.")
+print ("Loading...")
+
+db.read()
+print ("Data loaded.")
+
+
+while True:
+    show_menu()
+    choice = int(input("enter your choice: "))
+
+    if choice == 1:
+        Media.add ()
+
+    elif choice == 2:
+        name = input("enter movie name: ")
+        
+        if name in MOVIE_NAMES:
+            for movie in MOVIES:
+               
+                
+                if movie.name == name:
+                    movie.edit()
+                  
+                    break
+        else:
+            print("There is no movie with this name in the database.")   
+                 
+    elif choice == 3:
+        name = input("enter movie name: ")
+        for movie in MOVIES:
+            if movie.name == name:
+                movie.remove()
+
+    elif choice == 4:
+        search_result = []
+        Media.search()
+        if len(search_result) == 0:
+            print("....not found....")
+            
+
+    elif choice == 5:
+        name = input("enter movie name: ")
+        for movie in MOVIES:
+            if movie.name == name:
+                movie.download()
+
+    elif choice == 6:
+        Media.show_list()
+
+    elif choice == 7:
+       
+        db.write()
+        exit(0)
+    else:
+        print ("Enter a number between 1 and 7.")

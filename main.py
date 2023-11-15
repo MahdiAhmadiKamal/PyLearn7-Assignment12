@@ -6,7 +6,14 @@ from series import Series
 from documentary import Documentary
 from clip import Clip
 from actor import Actor
-          
+
+# global Media
+# global movie
+# global MOVIE_NAMES
+# global MOVIES
+# global ACTORS
+# global search_result          
+
 db = Database("PyLearn7-Assignment12/database.txt")
 
 MOVIE_NAMES = []
@@ -37,8 +44,8 @@ print ("Loading...")
 db.read()
 print ("Data loaded.")
 
-
 while True:
+    
     show_menu()
     choice = int(input("enter your choice: "))
 
@@ -80,7 +87,7 @@ while True:
         Media.show_list()
 
     elif choice == 7:
-       
+        
         db.write()
         exit(0)
     else:
