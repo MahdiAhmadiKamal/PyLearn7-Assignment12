@@ -8,11 +8,11 @@ from clip import Clip
 from actor import Actor
 
 # global Media
-# global movie
-# global MOVIE_NAMES
-# global MOVIES
-# global ACTORS
-# global search_result          
+global movie
+global MOVIE_NAMES
+global MOVIES
+global ACTORS
+global search_result          
 
 db = Database("PyLearn7-Assignment12/database.txt")
 
