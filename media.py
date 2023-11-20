@@ -1,10 +1,11 @@
 import pytube
 from tabulate import tabulate
+from database import MOVIES
 
 global movie
 global new_movie
 global MOVIE_NAMES
-global MOVIES
+# global MOVIES
 global ACTORS
 global search_result
 # MOVIES = []
@@ -19,6 +20,7 @@ class Media:
         self.url = u
         self.duration = du
         self.cast = c
+        # return Media
 
     #methods
     def show_info(self):
@@ -148,5 +150,7 @@ class Media:
         # ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")
         for movie in MOVIES:
             movie.show_info()
+
+
 
         
