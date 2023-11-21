@@ -1,17 +1,6 @@
-
-
-from database import Database
-# from media import Media
-
-
-from film import Film
-from series import Series
-from documentary import Documentary
-from clip import Clip
+from media import Media         
+from database import db
 from actor import Actor
-         
-
-db = Database("PyLearn7-Assignment12/database.txt")
 
 MOVIE_NAMES = []
 MOVIES = []
