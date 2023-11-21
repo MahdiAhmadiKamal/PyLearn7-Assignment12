@@ -1,17 +1,16 @@
 import pytube
 from tabulate import tabulate
-# from media import Media
-
+from media import Media
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
 
-global Media
-global movie
-# global MOVIE_NAMES
-# global MOVIES
-# global ACTORS
-global search_result
+# global Media
+# global movie
+# # global MOVIE_NAMES
+# # global MOVIES
+# # global ACTORS
+# global search_result
 
 class Database:
     def __init__(self, a):
@@ -33,7 +32,7 @@ class Database:
             ACTORS.append(result[5:len(result):1])
         
         f.close ()
-        # return MOVIES
+        # return my_obj
 
     def write(self):
         
@@ -51,7 +50,7 @@ class Database:
             f.write(my_string+'\n')
 
         f.close ()
-        # return MOVIES
+        return movie
 
 
 # db = Database("PyLearn7-Assignment12/database.txt")

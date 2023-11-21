@@ -1,26 +1,22 @@
 
 
 from database import Database
-from media import Media
-# from database import Media
+# from media import Media
+
+
 from film import Film
 from series import Series
 from documentary import Documentary
 from clip import Clip
 from actor import Actor
-
-# global Media
-# global movie
-# global MOVIE_NAMES
-# global MOVIES
-# global ACTORS
-# global search_result          
+         
 
 db = Database("PyLearn7-Assignment12/database.txt")
 
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
+
 
 inception = Media("Inception","Christopher Nolan",14,"https://www.youtube.com/watch?v=herRuccntNE", "2h28m",['Leonardo DiCaprio','Joseph Gordon-Levitt','Cillian Murphy'])
 # inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
