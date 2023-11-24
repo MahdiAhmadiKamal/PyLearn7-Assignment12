@@ -1,6 +1,7 @@
 import pytube
 from tabulate import tabulate
 
+
 search_result = []
 
 class Media:

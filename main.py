@@ -2,6 +2,7 @@ from media import Media
 from database import db
 from actor import Actor
 
+
 MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []

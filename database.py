@@ -6,6 +6,7 @@ MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
 
+
 class Database:
     def __init__(self, a):
         #properties
