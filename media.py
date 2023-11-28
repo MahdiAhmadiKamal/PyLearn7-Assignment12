@@ -41,7 +41,7 @@ class Media:
                 break
 
         new_movie = Media(name, director, score, url, duration, CAST)
-        MOVIES.append(new_movie)
+        return new_movie
     
     def edit(self):
         
@@ -96,7 +96,8 @@ class Media:
                 print ('Select from 1 to 7!')
                 item = int (input("select the item you want to edit: "))
     
-    def remove(self):
+    @staticmethod
+    def remove(MOVIES, movie):
         movie.show_info()
         MOVIES.remove(movie)
         print ('The movie has been successfully removed.')

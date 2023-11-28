@@ -38,7 +38,8 @@ while True:
     choice = int(input("enter your choice: "))
 
     if choice == 1:
-        Media.add ()
+        new_movie = Media.add()
+        MOVIES.append(new_movie)
 
     elif choice == 2:
         name = input("enter movie name: ")
@@ -56,7 +57,7 @@ while True:
         name = input("enter movie name: ")
         for movie in MOVIES:
             if movie.name == name:
-                movie.remove()
+                Media.remove(MOVIES, movie)
 
     elif choice == 4:
         search_result = []
