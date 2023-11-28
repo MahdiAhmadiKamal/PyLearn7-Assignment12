@@ -1,11 +1,14 @@
 from media import Media         
 from database import Database
+from database import MOVIES
+from database import MOVIE_NAMES
+# from database import ACTORS
 from actor import Actor
 
 
-MOVIE_NAMES = []
-MOVIES = []
-ACTORS = []
+# MOVIE_NAMES = []
+# MOVIES = []
+# ACTORS = []
 
 db = Database("PyLearn7-Assignment12/database.txt")
 

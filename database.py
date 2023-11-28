@@ -8,6 +8,7 @@ ACTORS = []
 
 
 class Database:
+    
     def __init__(self, a):
         #properties
         self.address = a
@@ -27,6 +28,8 @@ class Database:
             ACTORS.append(result[5:len(result):1])
         
         f.close ()
+        # return MOVIES
+       
 
     def write(self):
         
