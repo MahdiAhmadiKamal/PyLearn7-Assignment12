@@ -1,5 +1,5 @@
 from media import Media         
-from database import db
+from database import Database
 from actor import Actor
 
 
@@ -7,6 +7,7 @@ MOVIE_NAMES = []
 MOVIES = []
 ACTORS = []
 
+db = Database("PyLearn7-Assignment12/database.txt")
 
 inception = Media("Inception","Christopher Nolan",14,"https://www.youtube.com/watch?v=herRuccntNE", "2h28m",['Leonardo DiCaprio','Joseph Gordon-Levitt','Cillian Murphy'])
 # inception.cast = "Leonardo DiCaprio + Joseph Gordon-Levitt + Cillian Murphy"
@@ -48,7 +49,7 @@ while True:
             for movie in MOVIES:
                 
                 if movie.name == name:
-                    movie.edit()
+                    Media.edit(movie)
                     break
         else:
             print("There is no movie with this name in the database.")   
@@ -61,7 +62,7 @@ while True:
 
     elif choice == 4:
         search_result = []
-        Media.search()
+        Media.search(MOVIES)
         if len(search_result) == 0:
             print("....not found....")
             
@@ -70,10 +71,10 @@ while True:
         name = input("enter movie name: ")
         for movie in MOVIES:
             if movie.name == name:
-                movie.download()
+                Media.download(movie)
 
     elif choice == 6:
-        Media.show_list()
+        Media.show_list(MOVIES)
 
     elif choice == 7:
         

@@ -43,7 +43,8 @@ class Media:
         new_movie = Media(name, director, score, url, duration, CAST)
         return new_movie
     
-    def edit(self):
+    @staticmethod
+    def edit(movie):
         
         movie.show_info()
         print("name: 1")
@@ -103,7 +104,7 @@ class Media:
         print ('The movie has been successfully removed.')
 
     @staticmethod        
-    def search():
+    def search(MOVIES):
 
         search_by = int(input(" search by name: 1 \n search by Running time: 2 \n "))
         if search_by == 1:
@@ -131,15 +132,15 @@ class Media:
             print("select 1 or 2")
             Media.search()
         
-
-    def download(self):
+    @staticmethod
+    def download(movie):
         
         link = movie.url
         first_stream = pytube.YouTube(link).streams.first()
         first_stream.download(output_path='./', filename=movie.name + '.mp4')
 
     @staticmethod
-    def show_list():
+    def show_list(MOVIES):
         col_names = ["name", "    director", "    score", "      URL", "                           duration", "cast"]
         print(tabulate("",headers= col_names))
         # ("name\t\tdirector\t\tscore\t\turl\t\tduration\t\tcast")

@@ -1,5 +1,5 @@
-import pytube
-from tabulate import tabulate
+# import pytube
+# from tabulate import tabulate
 from media import Media
 
 MOVIE_NAMES = []
@@ -45,4 +45,4 @@ class Database:
 
         f.close ()
 
-db = Database("PyLearn7-Assignment12/database.txt")
+# db = Database("PyLearn7-Assignment12/database.txt")
