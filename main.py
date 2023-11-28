@@ -66,6 +66,8 @@ while True:
     elif choice == 4:
         search_result = []
         Media.search(MOVIES)
+        found_movie=Media.search
+        search_result.append(found_movie)
         if len(search_result) == 0:
             print("....not found....")
             

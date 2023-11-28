@@ -113,7 +113,7 @@ class Media:
             for movie in MOVIES:
                 if movie.name == user_input or movie.director == user_input:
                     movie.show_info()
-                    search_result.append(movie)
+                    # search_result.append(movie)
 
         elif search_by == 2:
                 
@@ -127,10 +127,10 @@ class Media:
                 total = hour*60 + min
                 if X <= total <= Y:
                     movie.show_info()
-                    search_result.append(movie)
+                    # search_result.append(movie)
         else:
             print("select 1 or 2")
-            Media.search()
+            Media.search(MOVIES)
         
     @staticmethod
     def download(movie):
