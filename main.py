@@ -4,7 +4,6 @@ from database import MOVIES
 from database import MOVIE_NAMES
 from actor import Actor
 
-
 # MOVIE_NAMES = []
 # MOVIES = []
 # ACTORS = []

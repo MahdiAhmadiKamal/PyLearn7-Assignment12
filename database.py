@@ -1,5 +1,3 @@
-# import pytube
-# from tabulate import tabulate
 from media import Media
 
 MOVIE_NAMES = []
@@ -28,9 +26,7 @@ class Database:
             ACTORS.append(result[5:len(result):1])
         
         f.close ()
-        # return MOVIES
        
-
     def write(self):
         
         f = open(self.address, "w")
