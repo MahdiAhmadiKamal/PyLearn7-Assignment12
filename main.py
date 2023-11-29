@@ -2,7 +2,6 @@ from media import Media
 from database import Database
 from database import MOVIES
 from database import MOVIE_NAMES
-# from database import ACTORS
 from actor import Actor
 
 
