@@ -8,6 +8,7 @@ from actor import Actor
 # MOVIES = []
 # ACTORS = []
 
+
 db = Database("PyLearn7-Assignment12/database.txt")
 
 inception = Media("Inception","Christopher Nolan",14,"https://www.youtube.com/watch?v=herRuccntNE", "2h28m",['Leonardo DiCaprio','Joseph Gordon-Levitt','Cillian Murphy'])
@@ -17,7 +18,6 @@ dicaprio.show()
 dicaprio.movie()
 # ACTORS.append(inception.cast)
 # print(ACTORS)
-
 
 def show_menu ():
     print ("1- Add")
