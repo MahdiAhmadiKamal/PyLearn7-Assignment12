@@ -5,7 +5,7 @@
 ## Python
 This program is written using Python language and uses [pytube](https://pypi.org/project/pytube/) and [tabulate](https://pypi.org/project/tabulate/) libraries to download movies and display their information. The program has the ability to search based on the names of actors and directors. You can also find a list of movies an actor has starred in.
 
-![Image](camera.jpg)
+![Image](camera2.jpg)
 
 ## Usage
 Install required libraries:
